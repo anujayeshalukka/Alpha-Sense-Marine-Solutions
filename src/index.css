@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", system-ui, sans-serif;
+  
+  --color-marine-950: #0b1528; /* Deep background */
+  --color-marine-900: #112140; /* Logo Navy */
+  --color-marine-800: #1a3059;
+  --color-teal-600: #097577;
+  --color-teal-500: #0B9193; /* Logo Teal */
+  --color-teal-400: #18b3b5;
+  --color-steel-900: #1e293b;
+  --color-steel-800: #334155;
+  --color-steel-600: #475569;
+  --color-steel-400: #94a3b8;
+  --color-orange-500: #E56B27; /* Logo Orange */
+  --color-orange-600: #cc5c1e;
+}
+
+/* Base styles for premium look */
+@layer base {
+  html, body {
+    @apply bg-marine-950 text-slate-300 antialiased font-sans overflow-x-hidden;
+    max-width: 100%;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white font-semibold;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .glass-panel {
+    @apply bg-marine-900/40 backdrop-blur-md border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+  }
+  .glass-card {
+    @apply bg-marine-800/30 backdrop-blur-sm border border-white/10 hover:border-teal-500/30 transition-colors duration-300;
+  }
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 180, 216, 0.5);
+  }
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-marine-950;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-steel-800 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-teal-600;
+}
+
+/* Light Theme Overrides */
+.light-theme {
+  /* Backgrounds: Softer, warmer bright mode */
+  --color-marine-950: #f4f7f6; /* Very light cool-grey/teal */
+  --color-marine-900: #ffffff; /* Pure white */
+  --color-marine-800: #e9eff0; /* Slightly darker cool-grey */
+  
+  /* Text and Borders: Maximum contrast */
+  --color-white: #020617; /* Very dark slate for text that used to be white */
+  
+  /* Text colors: Darker for readability */
+  --color-slate-300: #1e293b; /* slate-800 */
+  --color-slate-400: #334155; /* slate-700 */
+  --color-slate-500: #475569; /* slate-600 */
+
+  /* Teal accent colors: Darker for contrast on white */
+  --color-teal-400: #0B9193; 
+  --color-teal-500: #097577; 
+  --color-teal-600: #065455;
+  
+  /* Scrollbar */
+  --color-steel-800: #cbd5e1; /* slate-300 */
+}
+
+/* Hero Image Blending */
+.hero-image {
+  mix-blend-mode: overlay;
+  opacity: 1;
+}
+
+.light-theme .hero-image {
+  mix-blend-mode: multiply;
+  opacity: 0.15;
+}
+
+/* Explore Services Button */
+.btn-explore {
+  background-color: rgba(26, 48, 89, 0.5); /* marine-800/50 */
+}
+.btn-explore:hover {
+  background-color: rgba(26, 48, 89, 0.7); /* hover:marine-700/50 approx */
+}
+
+.light-theme .btn-explore {
+  background-color: #ffffff; /* Solid white in bright mode */
+}
+.light-theme .btn-explore:hover {
+  background-color: #f8fafc; /* Slight off-white on hover in bright mode */
+}
+
+/* Hero Badge */
+.badge-alpha {
+  background-color: rgba(11, 145, 147, 0.1); /* teal-500/10 */
+}
+.light-theme .badge-alpha {
+  background-color: #ffffff;
+}
+
+/* About Section Button */
+.btn-about {
+  background-color: #0B9193;
+}
+.btn-about:hover {
+  background-color: #097577;
+}
+.light-theme .btn-about {
+  background-color: #0B9193 !important;
+  color: #ffffff !important;
+}
+.light-theme .btn-about:hover {
+  background-color: #097577 !important;
+}
+
+/* Navigation Showcase Bright Theme Customizations */
+.light-theme .nav-showcase-card:hover,
+.light-theme .nav-showcase-first {
+  background-color: #D85F26 !important;
+  border-color: #D85F26 !important;
+}
+
+.light-theme .nav-showcase-card:hover .nav-showcase-title,
+.light-theme .nav-showcase-card:hover .nav-showcase-desc,
+.light-theme .nav-showcase-first .nav-showcase-title,
+.light-theme .nav-showcase-first .nav-showcase-desc {
+  color: #ffffff !important;
+}
+
+.light-theme .nav-showcase-card:hover .nav-showcase-view,
+.light-theme .nav-showcase-first .nav-showcase-view {
+  color: #334155 !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.light-theme .nav-showcase-card:hover .nav-showcase-bg,
+.light-theme .nav-showcase-first .nav-showcase-bg {
+  transform: scale(1.5) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.light-theme .sourcing-box {
+  background-color: #D85F26 !important;
+  border-color: #D85F26 !important;
+}
+.light-theme .sourcing-box h3,
+.light-theme .sourcing-box p {
+  color: #ffffff !important;
+}
+.light-theme .sourcing-box a {
+  color: #000000 !important;
+}
+
+/* Service Detail Brands - Bright Theme Active Default */
+.light-theme .brand-box-first {
+  border-color: rgba(9, 117, 119, 0.5) !important;
+  color: #0B9193 !important;
+}
+
+/* Service Detail Features - Bright Theme Hover */
+.light-theme .feature-card:hover {
+  background-color: #0b1528 !important;
+}
+.light-theme .feature-card:hover .feature-text {
+  color: #ffffff !important;
+}
