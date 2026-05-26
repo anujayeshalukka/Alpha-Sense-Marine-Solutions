@@ -2,6 +2,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ShieldCheck, Globe, Wrench, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import testimonialVideo from '../../assets/testimonial.mp4';
+import testimonialPoster from '../../assets/testimonial_poster.jpg';
+
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -17,6 +19,8 @@ const Hero = () => {
         loop
         muted
         playsInline
+        preload="auto"
+        poster={testimonialPoster}
         src={testimonialVideo}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-[#0b1528] via-[#0b1528]/60 to-transparent opacity-90 z-0" />
