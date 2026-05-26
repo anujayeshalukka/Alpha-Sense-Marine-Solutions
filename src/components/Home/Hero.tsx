@@ -23,8 +23,8 @@ const Hero = () => {
         poster={testimonialPoster}
         src={testimonialVideo}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0b1528] via-[#0b1528]/60 to-transparent opacity-90 z-0" />
-      <div className="absolute inset-0 bg-gradient-to-l from-marine-950 via-marine-900/60 to-transparent z-0" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0b1528] via-[#0b1528]/60 to-transparent opacity-90 z-0 hero-overlay-top" />
+      <div className="absolute inset-0 bg-gradient-to-l from-marine-950 via-marine-900/60 to-transparent z-0 hero-overlay-left" />
 
       {/* Animated Technical Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none z-0" />

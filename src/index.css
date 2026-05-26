@@ -114,6 +114,15 @@ html {
   opacity: 0.15;
 }
 
+.light-theme .hero-overlay-top {
+  background: rgba(186, 230, 253, 0.8) !important;
+  opacity: 1 !important;
+}
+
+.light-theme .hero-overlay-left {
+  display: none !important;
+}
+
 /* Explore Services Button */
 .btn-explore {
   background-color: rgba(26, 48, 89, 0.5); /* marine-800/50 */
