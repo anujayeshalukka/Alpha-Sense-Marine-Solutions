@@ -213,3 +213,50 @@ html {
 .light-theme .feature-card:hover .feature-text {
   color: #ffffff !important;
 }
+
+/* Force dark theme variables for Hero section in bright mode */
+.dark-theme-section {
+  --color-marine-950: #0b1528 !important;
+  --color-marine-900: #112140 !important;
+  --color-marine-800: #1a3059 !important;
+  --color-white: #ffffff !important;
+  --color-slate-300: #cbd5e1 !important;
+  --color-slate-400: #94a3b8 !important;
+  --color-slate-500: #64748b !important;
+  --color-teal-400: #18b3b5 !important;
+  --color-teal-500: #0B9193 !important;
+  --color-teal-600: #097577 !important;
+  --color-steel-800: #334155 !important;
+}
+
+/* Force dark styles for specific components in Hero section */
+.dark-theme-section .hero-image {
+  mix-blend-mode: overlay !important;
+  opacity: 1 !important;
+}
+
+.dark-theme-section .hero-overlay-top {
+  background: linear-gradient(to top, #0b1528, rgba(11, 21, 40, 0.6) 60%, transparent) !important;
+  opacity: 0.9 !important;
+}
+
+.dark-theme-section .hero-overlay-left {
+  display: block !important;
+  background: linear-gradient(to left, #0b1528, rgba(17, 33, 64, 0.6) 60%, transparent) !important;
+}
+
+.dark-theme-section .btn-explore {
+  background-color: rgba(26, 48, 89, 0.5) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark-theme-section .btn-explore:hover {
+  background-color: rgba(26, 48, 89, 0.7) !important;
+}
+
+.dark-theme-section .badge-alpha {
+  background-color: rgba(11, 145, 147, 0.1) !important;
+  border-color: rgba(24, 179, 181, 0.3) !important;
+}
+

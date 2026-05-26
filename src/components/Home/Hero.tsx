@@ -9,7 +9,7 @@ const Hero = () => {
   const { scrollY } = useScroll();
   const videoY = useTransform(scrollY, [0, 1000], ['0%', '25%']);
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20 pb-20 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center pt-20 pb-20 overflow-hidden dark-theme-section">
       {/* Background Visuals */}
       <div className="absolute inset-0 bg-marine-950 z-0" />
       <motion.video
