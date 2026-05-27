@@ -231,32 +231,37 @@ html {
 
 /* Force dark styles for specific components in Hero section */
 .dark-theme-section .hero-image {
-  mix-blend-mode: overlay !important;
-  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  opacity: 0.75 !important;
 }
 
 .dark-theme-section .hero-overlay-top {
-  background: linear-gradient(to top, #0b1528, rgba(11, 21, 40, 0.6) 60%, transparent) !important;
-  opacity: 0.9 !important;
+  background: linear-gradient(to top, #0b1528, rgba(11, 21, 40, 0.2) 80%, transparent) !important;
+  opacity: 0.05 !important;
 }
 
 .dark-theme-section .hero-overlay-left {
   display: block !important;
-  background: linear-gradient(to left, #0b1528, rgba(17, 33, 64, 0.6) 60%, transparent) !important;
+  background: linear-gradient(to left, #0b1528, rgba(17, 33, 64, 0.4) 80%, transparent) !important;
+  opacity: 0.1 !important;
 }
 
-.dark-theme-section .btn-explore {
-  background-color: rgba(26, 48, 89, 0.5) !important;
+.dark-theme-section {
+  background-color: rgba(26, 48, 89, 0.8) !important;
   color: #ffffff !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
-
+.btn-explore {
+  background-color: rgb(11 21 40, 0.9) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
 .dark-theme-section .btn-explore:hover {
-  background-color: rgba(26, 48, 89, 0.7) !important;
+  background-color: rgba(26, 48, 89, 0.9) !important;
 }
 
 .dark-theme-section .badge-alpha {
-  background-color: rgba(11, 145, 147, 0.1) !important;
+  background-color: rgba(11, 145, 147, 0.4) !important;
   border-color: rgba(24, 179, 181, 0.3) !important;
 }
 

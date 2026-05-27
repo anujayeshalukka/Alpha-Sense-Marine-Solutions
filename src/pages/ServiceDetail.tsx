@@ -50,6 +50,17 @@ import bn2 from '../assets/equipments/bn2.jpg';
 import nav1 from '../assets/equipments/nav1.jpg';
 import nav2 from '../assets/equipments/nav2.jpg';
 import nav3 from '../assets/equipments/nav3.jpg';
+import alarmImg from '../assets/marine/alarm.jpg';
+import cargoImg from '../assets/marine/cargo.jpg';
+import pmsImg1 from '../assets/marine/pms.jpg';
+import pmsImg2 from '../assets/marine/pms2.jpg';
+import engineImg from '../assets/marine/engine.jpg';
+import tankImg from '../assets/marine/tank.jpg';
+import steelImg from '../assets/marine/steel.jpg';
+import stImg from '../assets/marine/st.jpg';
+import marineLightImg1 from '../assets/marine/marine.jpg';
+import marineLightImg2 from '../assets/marine/marine2.jpg';
+import cctvImg from '../assets/marine/cctv.jpg';
 
 // Mock database for service details
 const serviceData: Record<string, any> = {
@@ -295,7 +306,8 @@ const automationEquipments = [
       "I/O and signal conditioning modules",
       "Communication and network interfaces"
     ],
-    photoCount: 1
+    photoCount: 1,
+    photos: [alarmImg]
   },
   {
     name: "Ballast Water & Cargo Control Systems",
@@ -306,7 +318,8 @@ const automationEquipments = [
       "Tank level monitoring modules",
       "Valve control interface cards"
     ],
-    photoCount: 1
+    photoCount: 1,
+    photos: [cargoImg]
   },
   {
     name: "Power Management System (PMS)",
@@ -317,7 +330,8 @@ const automationEquipments = [
       "Interface and communication modules",
       "PMS PLC modules and CPU cards"
     ],
-    photoCount: 2
+    photoCount: 2,
+    photos: [pmsImg1, pmsImg2]
   },
   {
     name: "Engine Room Automation & Control Systems",
@@ -328,7 +342,8 @@ const automationEquipments = [
       "Operator panels and HMI displays",
       "Machinery control interfaces"
     ],
-    photoCount: 1
+    photoCount: 1,
+    photos: [engineImg]
   },
   {
     name: "Tank Level Gauging and VRCS System",
@@ -339,7 +354,8 @@ const automationEquipments = [
       "Float level transmitters and switches",
       "Signal converters and barrier modules"
     ],
-    photoCount: 1
+    photoCount: 1,
+    photos: [tankImg]
   },
   {
     name: "Fire Detection & Gas Detection Systems",
@@ -350,7 +366,8 @@ const automationEquipments = [
       "Central fire control panels and cards",
       "Intrinsically safe barriers and modules"
     ],
-    photoCount: 1
+    photoCount: 1,
+    photos: [steelImg]
   },
   {
     name: "Steering Control System",
@@ -361,7 +378,8 @@ const automationEquipments = [
       "Autopilot interface modules",
       "Solenoid valve driver cards"
     ],
-    photoCount: 1
+    photoCount: 1,
+    photos: [stImg]
   },
   {
     name: "Marine Lighting & Navigation Signal Lights",
@@ -372,7 +390,8 @@ const automationEquipments = [
       "Explosion-proof light fittings",
       "Emergency lighting controllers"
     ],
-    photoCount: 2
+    photoCount: 2,
+    photos: [marineLightImg1, marineLightImg2]
   },
   {
     name: "CCTV & Thermal Imaging Systems",
@@ -383,7 +402,8 @@ const automationEquipments = [
       "Digital Video Recorders (DVR/NVR)",
       "Video matrix switchers and network cards"
     ],
-    photoCount: 2
+    photoCount: 1,
+    photos: [cctvImg]
   }
 ];
 
@@ -427,58 +447,15 @@ const ServiceDetail = () => {
         </Link>
       </PageBanner>
 
-      {/* Features & Brands */}
-      <section className="py-20 bg-marine-900 border-t border-white/5">
-        <div className="max-w-[1536px] mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16">
-            
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-2xl font-bold text-white mb-8 border-l-4 border-teal-500 pl-4">Equipment & Capabilities</h2>
-              <div className="grid sm:grid-cols-1 gap-4">
-                {service.features.map((feature: string, idx: number) => (
-                  <div key={idx} className="glass-card p-4 rounded-xl flex items-center gap-3 feature-card cursor-default">
-                    <CheckCircle2 className="w-5 h-5 text-teal-400 shrink-0" />
-                    <span className="text-slate-300 text-sm font-medium feature-text transition-colors">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+     
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <h2 className="text-2xl font-bold text-white mb-8 border-l-4 border-teal-500 pl-4">Supported Brands</h2>
-              <div className="flex flex-wrap gap-3">
-                {service.brands.map((brand: string, idx: number) => (
-                  <span key={idx} className={`px-4 py-2 bg-marine-950 border border-white/10 rounded-lg text-slate-300 text-sm font-medium hover:border-teal-500/50 hover:text-teal-400 transition-colors cursor-default brand-box ${idx === 0 ? 'brand-box-first' : ''}`}>
-                    {brand}
-                  </span>
-                ))}
-              </div>
-              
-              <div className="mt-12 p-8 bg-marine-950 border border-teal-500/20 rounded-2xl relative overflow-hidden sourcing-box">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-[50px] pointer-events-none" />
-                <h3 className="text-xl font-bold text-white mb-3">Looking for a specific part?</h3>
-                <p className="text-slate-400 text-sm mb-6 leading-relaxed">
-                  Our extensive global network allows us to source hard-to-find, obsolete, or highly specific marine spares. Provide us with the maker, model, and serial number.
-                </p>
-                <Link to="/contact" className="text-teal-400 font-semibold hover:text-teal-300 flex items-center gap-2 text-sm group">
-                  Contact Sourcing Team <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </motion.div>
 
-          </div>
-        </div>
-      </section>
+
+
+
+
+
+
 
       {/* Navigation Equipment Showcase Section */}
       {id === 'navigation' && (
@@ -565,6 +542,12 @@ const ServiceDetail = () => {
           </div>
         </section>
       )}
+
+
+
+
+
+
 
       {/* Automation Equipment Showcase Section */}
       {id === 'automation' && (
@@ -686,6 +669,63 @@ const ServiceDetail = () => {
           </div>
         </section>
       )}
+
+
+
+ {/* Features & Brands */}
+      <section className="py-20 bg-marine-900 border-t border-white/5">
+        <div className="max-w-[1536px] mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-16">
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-2xl font-bold text-white mb-8 border-l-4 border-teal-500 pl-4">Equipment & Capabilities</h2>
+              <div className="grid sm:grid-cols-1 gap-4">
+                {service.features.map((feature: string, idx: number) => (
+                  <div key={idx} className="glass-card p-4 rounded-xl flex items-center gap-3 feature-card cursor-default">
+                    <CheckCircle2 className="w-5 h-5 text-teal-400 shrink-0" />
+                    <span className="text-slate-300 text-sm font-medium feature-text transition-colors">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h2 className="text-2xl font-bold text-white mb-8 border-l-4 border-teal-500 pl-4">Supported Brands</h2>
+              <div className="flex flex-wrap gap-3">
+                {service.brands.map((brand: string, idx: number) => (
+                  <span key={idx} className={`px-4 py-2 bg-marine-950 border border-white/10 rounded-lg text-slate-300 text-sm font-medium hover:border-teal-500/50 hover:text-teal-400 transition-colors cursor-default brand-box ${idx === 0 ? 'brand-box-first' : ''}`}>
+                    {brand}
+                  </span>
+                ))}
+              </div>
+              
+              <div className="mt-12 p-8 bg-marine-950 border border-teal-500/20 rounded-2xl relative overflow-hidden sourcing-box">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-[50px] pointer-events-none" />
+                <h3 className="text-xl font-bold text-white mb-3">Looking for a specific part?</h3>
+                <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                  Our extensive global network allows us to source hard-to-find, obsolete, or highly specific marine spares. Provide us with the maker, model, and serial number.
+                </p>
+                <Link to="/contact" className="text-teal-400 font-semibold hover:text-teal-300 flex items-center gap-2 text-sm group">
+                  Contact Sourcing Team <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+
 
       <GlobalSupportCTA />
     </div>

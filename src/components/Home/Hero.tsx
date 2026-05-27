@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ShieldCheck, Globe, Wrench, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import testimonialVideo from '../../assets/testimonial.mp4';
+import alphaSenseVideo from '../../assets/Alpha sense.mp4';
 import testimonialPoster from '../../assets/testimonial_poster.jpg';
 
 
@@ -21,10 +21,10 @@ const Hero = () => {
         playsInline
         preload="auto"
         poster={testimonialPoster}
-        src={testimonialVideo}
+        src={alphaSenseVideo}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0b1528] via-[#0b1528]/60 to-transparent opacity-90 z-0 hero-overlay-top" />
-      <div className="absolute inset-0 bg-gradient-to-l from-marine-950 via-marine-900/60 to-transparent z-0 hero-overlay-left" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0b1528] via-[#0b1528]/20 to-transparent opacity-30 z-0 hero-overlay-top" />
+      <div className="absolute inset-0 bg-gradient-to-r from-marine-950 via-marine-900/20 to-transparent z-0 hero-overlay-left" />
 
       {/* Animated Technical Grid */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none z-0" />
@@ -41,7 +41,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="badge-alpha inline-block border border-teal-500/30 backdrop-blur-sm px-4 py-1.5 rounded-full mb-6">
-              <span className="text-teal-400 text-sm font-medium tracking-wide uppercase">
+              <span className="text-white text-sm font-medium tracking-wide uppercase">
                 Alpha Sense Marine Solutions LLC
               </span>
             </div>
@@ -51,9 +51,9 @@ const Hero = () => {
                  Technical Solutions
               </span> Worldwide
             </h1>
-            <p className="text-lg text-slate-300 max-w-2xl mb-10 leading-relaxed">
+            {/* <p className="text-lg text-slate-300 max-w-2xl mb-10 leading-relaxed">
               Supporting vessels and offshore operations with marine navigation systems, automation spare parts, communication equipment, electrical systems, and 24/7 global technical support.
-            </p>
+            </p> */}
 
             <div className="flex flex-wrap gap-4">
               <Link
@@ -74,7 +74,7 @@ const Hero = () => {
         </div>
 
         {/* Floating Stat Cards */}
-        <div className="lg:col-span-4 relative hidden md:block">
+        {/* <div className="lg:col-span-4 relative hidden md:block">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -99,7 +99,7 @@ const Hero = () => {
               <p className="text-slate-400 text-sm">Expert engineering assistance for critical requirements.</p>
             </div>
           </motion.div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
