@@ -82,7 +82,7 @@ const serviceData: Record<string, any> = {
       "Main Engine Remote Control",
       "Boiler Control Systems"
     ],
-    brands: ["ABB", "Siemens", "Wärtsilä", "Schneider Electric", "Emerson", "Kongsberg"]
+    brands: ["ABB", "Kongsberg Maritime", "Wärtsilä", "Schneider Electric", "Siemens", "Emerson"]
   },
   communication: {
     title: "Communication Systems",
@@ -285,6 +285,108 @@ const navigationEquipments = [
   }
 ];
 
+const automationEquipments = [
+  {
+    name: "Alarm Monitoring & Control System",
+    description: "Alarm monitoring systems supervise all critical shipboard systems including engines, pumps, tanks, and safety equipment.",
+    models: [
+      "Alarm panels and HMIs",
+      "Processor and control cards",
+      "I/O and signal conditioning modules",
+      "Communication and network interfaces"
+    ],
+    photoCount: 1
+  },
+  {
+    name: "Ballast Water & Cargo Control Systems",
+    description: "These systems control ballast water treatment, cargo tank monitoring, and cargo valve operations.",
+    models: [
+      "Cargo automation controllers",
+      "Ballast control system PLCs",
+      "Tank level monitoring modules",
+      "Valve control interface cards"
+    ],
+    photoCount: 1
+  },
+  {
+    name: "Power Management System (PMS)",
+    description: "PMS controls generator load sharing, blackout prevention, and automatic generator start/stop operations.",
+    models: [
+      "PMS controller boards and modules",
+      "Generator protection and sync relays",
+      "Interface and communication modules",
+      "PMS PLC modules and CPU cards"
+    ],
+    photoCount: 2
+  },
+  {
+    name: "Engine Room Automation & Control Systems",
+    description: "Engine room automation systems monitor propulsion engines, auxiliary machinery, and engine room safety systems.",
+    models: [
+      "Main engine remote control cards",
+      "PLC modules (CPU, I/O, Power)",
+      "Operator panels and HMI displays",
+      "Machinery control interfaces"
+    ],
+    photoCount: 1
+  },
+  {
+    name: "Tank Level Gauging and VRCS System",
+    description: "Tank level systems measure cargo, ballast, and fuel tank levels using radar, pressure, or float sensors.",
+    models: [
+      "Radar level transmitters",
+      "Hydrostatic pressure sensors",
+      "Float level transmitters and switches",
+      "Signal converters and barrier modules"
+    ],
+    photoCount: 1
+  },
+  {
+    name: "Fire Detection & Gas Detection Systems",
+    description: "Safety systems detect fire, smoke, and hazardous gas levels onboard vessels.",
+    models: [
+      "Gas and toxic vapor detectors",
+      "Flame and optical smoke detectors",
+      "Central fire control panels and cards",
+      "Intrinsically safe barriers and modules"
+    ],
+    photoCount: 1
+  },
+  {
+    name: "Steering Control System",
+    description: "Steering control systems manage rudder movement and autopilot functions.",
+    models: [
+      "Steering control cards and modules",
+      "Rudder angle feedback units",
+      "Autopilot interface modules",
+      "Solenoid valve driver cards"
+    ],
+    photoCount: 1
+  },
+  {
+    name: "Marine Lighting & Navigation Signal Lights",
+    description: "Marine lighting systems include navigation lights, searchlights, and signal lights used for safe vessel operation.",
+    models: [
+      "Navigation signal lights and panels",
+      "Searchlights and halogen/LED fixtures",
+      "Explosion-proof light fittings",
+      "Emergency lighting controllers"
+    ],
+    photoCount: 2
+  },
+  {
+    name: "CCTV & Thermal Imaging Systems",
+    description: "These systems provide monitoring of deck operations, engine rooms, and security areas.",
+    models: [
+      "Marine-grade PTZ cameras",
+      "Thermal imaging and night vision cameras",
+      "Digital Video Recorders (DVR/NVR)",
+      "Video matrix switchers and network cards"
+    ],
+    photoCount: 2
+  }
+];
+
 const ServiceDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [service, setService] = useState<any>(null);
@@ -418,6 +520,127 @@ const ServiceDetail = () => {
 
                     <div className="mb-2">
                       <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Typical Makes & Models:</h4>
+                      <ul className="space-y-2">
+                        {equip.models.map((model, mIdx) => (
+                          <li key={mIdx} className="text-slate-300 text-sm flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 shrink-0" />
+                            <span>{model}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Equipment Photos ({equip.photoCount} slots):</h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                      {Array.from({ length: equip.photoCount }).map((_, pIdx) => {
+                        const hasPhoto = 'photos' in equip && equip.photos && equip.photos[pIdx];
+                        return hasPhoto ? (
+                          <div
+                            key={pIdx}
+                            className="aspect-[4/3] relative overflow-hidden rounded-xl border border-white/10 hover:border-teal-500/30 transition-all select-none cursor-pointer group animate-fade-in"
+                          >
+                            <img
+                              src={(equip.photos as string[])[pIdx]}
+                              alt={`${equip.name} Photo ${pIdx + 1}`}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                        ) : (
+                          <div
+                            key={pIdx}
+                            className="aspect-[4/3] bg-marine-900/50 backdrop-blur-sm border border-dashed border-white/10 hover:border-teal-500/30 transition-colors rounded-xl flex flex-col items-center justify-center gap-1.5 p-2 text-slate-500 hover:text-teal-400 select-none cursor-pointer group"
+                          >
+                            <Image className="w-4 h-4 text-slate-600 group-hover:text-teal-400 transition-colors" />
+                            <span className="text-[10px] font-medium text-slate-600 group-hover:text-teal-500 transition-colors">Slot {pIdx + 1}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Automation Equipment Showcase Section */}
+      {id === 'automation' && (
+        <section className="py-20 bg-marine-950 border-t border-white/5 relative overflow-hidden">
+          {/* Subtle glow effects */}
+          <div className="absolute top-1/4 left-0 w-96 h-96 bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-orange-500/5 rounded-full blur-[120px] pointer-events-none" />
+          
+          <div className="max-w-[1536px] mx-auto px-6 lg:px-8 relative z-10">
+            {/* Overview / Introduction Block */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="glass-card p-8 md:p-12 rounded-3xl border border-teal-500/20 mb-16 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/5 rounded-full blur-[80px] pointer-events-none" />
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">
+                Marine Automation & Electrical Spare Parts
+              </h3>
+              <div className="grid md:grid-cols-2 gap-8 text-slate-300 text-sm md:text-base leading-relaxed">
+                <div>
+                  <p className="mb-4">
+                    At Alphasense Marine Solutions LLC, we support and supply spare parts for all major marine automation and electrical brands, serving vessels worldwide with reliable products, practical solutions, and fast technical support.
+                  </p>
+                  <p>
+                    We provide spare parts for cargo tank level, pressure and temperature monitoring systems, cargo and ballast valve control systems, engine room controllers, alarm monitoring systems, purifier control systems, switchboards and switchgear components, Power Management Systems (PMS), Integrated Automation Systems (IAS), and all electrical and automation-related spare parts.
+                  </p>
+                </div>
+                <div>
+                  <p className="mb-6">
+                    When original spare parts are unavailable or have long lead times, our technical team provides equivalent solutions available in the market, ensuring minimal downtime and uninterrupted vessel operations.
+                  </p>
+                  <div className="p-4 bg-teal-950/40 border border-teal-500/30 rounded-xl">
+                    <h4 className="text-teal-400 font-semibold text-sm mb-1">Global Spares & 24/7 Technical Support</h4>
+                    <p className="text-xs text-slate-400">
+                      Our mission is to support shipowners, ship managers, and shipyards with reliable OEM spare parts or high-quality equivalent alternatives to ensure safe and efficient vessel operations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <div className="max-w-3xl mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Detailed <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-teal-200">Automation Equipment Catalog</span>
+              </h2>
+              <p className="text-slate-400 text-base leading-relaxed">
+                Explore our comprehensive spare parts portfolio for marine automation and control systems. We source, supply, and support these systems globally with a guarantee of original spares and technical excellence.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              {automationEquipments.map((equip, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.05 }}
+                  className="glass-card equip-catalog-card rounded-2xl p-6 lg:p-8 flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-all duration-300"
+                >
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-teal-500/10 flex items-center justify-center text-teal-400 text-sm font-bold border border-teal-500/20">
+                        {idx + 1}
+                      </span>
+                      {equip.name}
+                    </h3>
+                    <p className="text-slate-300 text-sm mb-6 leading-relaxed">
+                      {equip.description}
+                    </p>
+
+                    <div className="mb-2">
+                      <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Key Spare Parts & Components:</h4>
                       <ul className="space-y-2">
                         {equip.models.map((model, mIdx) => (
                           <li key={mIdx} className="text-slate-300 text-sm flex items-start gap-2">
