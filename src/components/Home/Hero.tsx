@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ShieldCheck, Globe, Wrench, ArrowRight } from 'lucide-react';
+import {  ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import alphaSenseVideo from '../../assets/Alpha sense.mp4';
 import testimonialPoster from '../../assets/testimonial_poster.jpg';
