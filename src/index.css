@@ -260,3 +260,36 @@ html {
   border-color: rgba(24, 179, 181, 0.3) !important;
 }
 
+/* Light theme overrides for Equipment Catalog Cards */
+.light-theme .equip-catalog-card {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-theme .equip-catalog-card h3 {
+  color: #0b1528 !important;
+}
+
+.light-theme .equip-catalog-card p {
+  color: #334155 !important;
+}
+
+.light-theme .equip-catalog-card li {
+  color: #475569 !important;
+}
+
+.light-theme .equip-catalog-card .aspect-\[4\/3\] {
+  background-color: #f8fafc !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .equip-catalog-card .aspect-\[4\/3\] span {
+  color: #64748b !important;
+}
+
+.light-theme .equip-catalog-card .aspect-\[4\/3\] svg {
+  color: #94a3b8 !important;
+}
+
+

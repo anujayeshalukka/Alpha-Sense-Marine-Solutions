@@ -1,13 +1,55 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ChevronRight, ArrowLeft, CheckCircle2, Image } from 'lucide-react';
 import GlobalSupportCTA from '../components/Home/GlobalSupportCTA';
 import PageBanner from '../components/Layout/PageBanner';
 import marineImg from '../assets/marine.jpg';
 import commImg from '../assets/communication.jpg';
 import safetyImg from '../assets/safety.jpg';
 import mechImg from '../assets/mechanical.jpg';
+import gpsImg1 from '../assets/equipments/New Project (1).jpg';
+import gpsImg2 from '../assets/equipments/New Project (2).jpg';
+import gpsImg3 from '../assets/equipments/New Project (3).jpg';
+import gpsImg4 from '../assets/equipments/New Project (4).jpg';
+import eq2 from '../assets/equipments/eq2.jpg';
+import eq3 from '../assets/equipments/eq3.jpg';
+import eq4 from '../assets/equipments/eq4.jpg';
+import gy1 from '../assets/equipments/gy1.jpg';
+import gy2 from '../assets/equipments/gy2.jpg';
+import gy3 from '../assets/equipments/gy3.jpg';
+import gy4 from '../assets/equipments/gy4.jpg';
+import mc1 from '../assets/equipments/mc1.jpg';
+import mc2 from '../assets/equipments/mc2.jpg';
+import mc3 from '../assets/equipments/mc3.jpg';
+import ec1 from '../assets/equipments/ec1.jpg';
+import ec2 from '../assets/equipments/ec2.jpg';
+import ec3 from '../assets/equipments/ec3.jpg';
+import ec4 from '../assets/equipments/ec4.jpg';
+import mr1 from '../assets/equipments/mr1.jpg';
+import mr2 from '../assets/equipments/mr2.jpg';
+import mr3 from '../assets/equipments/mr3.jpg';
+import mr4 from '../assets/equipments/mr4.jpg';
+import mr5 from '../assets/equipments/mr5.jpg';
+import ais1 from '../assets/equipments/ais1.jpg';
+import ais2 from '../assets/equipments/ais2.jpg';
+import ais3 from '../assets/equipments/ais3.jpg';
+import auto1 from '../assets/equipments/auto1.jpg';
+import auto2 from '../assets/equipments/auto2.jpg';
+import auto3 from '../assets/equipments/auto3.jpg';
+import auto4 from '../assets/equipments/auto4.jpg';
+import speed1 from '../assets/equipments/speed1.jpg';
+import speed2 from '../assets/equipments/speed2.jpg';
+import speed3 from '../assets/equipments/speed3.jpg';
+import speed4 from '../assets/equipments/speed4.jpg';
+import echo1 from '../assets/equipments/echo1.jpg';
+import echo2 from '../assets/equipments/echo2.jpg';
+import echo3 from '../assets/equipments/echo3.jpg';
+import bn1 from '../assets/equipments/bn1.jpg';
+import bn2 from '../assets/equipments/bn2.jpg';
+import nav1 from '../assets/equipments/nav1.jpg';
+import nav2 from '../assets/equipments/nav2.jpg';
+import nav3 from '../assets/equipments/nav3.jpg';
 
 // Mock database for service details
 const serviceData: Record<string, any> = {
@@ -104,6 +146,145 @@ const serviceData: Record<string, any> = {
   }
 };
 
+const navigationEquipments = [
+  {
+    name: "GPS / DGPS",
+    description: "Marine GPS/DGPS systems provide accurate vessel position, speed, and time data for integration with Radar, AIS, ECDIS, Autopilot and other bridge navigation systems.",
+    models: [
+      "Furuno – GP-170, GP-39, GP-3700",
+      "JRC – JLR-7600, JLR-7900, JLR-8400, JLR-8600",
+      "Koden – KGP-922",
+      "Garmin – GPSMAP Series"
+    ],
+    photoCount: 4,
+    photos: [gpsImg1, gpsImg2, gpsImg3, gpsImg4]
+  },
+  {
+    name: "Satellite Compass",
+    description: "Satellite compass systems provide precise heading and position data using multiple GNSS satellites for radar overlay, autopilot steering and dynamic positioning.",
+    models: [
+      "Furuno – SCX-20, SCX-21",
+      "JRC – JLR-21 GNSS Compass",
+      "Garmin – MSC-10"
+    ],
+    photoCount: 3,
+    photos: [eq2, eq3, eq4]
+  },
+  {
+    name: "Gyro Compass",
+    description: "Gyrocompasses provide true north heading reference independent of magnetic interference and are essential for modern navigation systems.",
+    models: [
+      "Furuno – SC-70, SC-130",
+      "Tokyo Keiki – TG-8000",
+      "Raytheon Anschütz – Standard 22 NX",
+      "Simrad GC80/85"
+    ],
+    photoCount: 4,
+    photos: [gy1, gy2, gy3, gy4]
+  },
+  {
+    name: "Magnetic Compass",
+    description: "Magnetic compasses serve as SOLAS-required backup navigation instruments for safe vessel navigation.",
+    models: [
+      "Cassens & Plath – Marine Compass",
+      "Ritchie – Navigator Series",
+      "Plastimo – Offshore Series",
+      "Tokyo Keiki – Standard Marine Compass"
+    ],
+    photoCount: 3,
+    photos: [mc1, mc2, mc3]
+  },
+  {
+    name: "ECDIS",
+    description: "Electronic Chart Display & Information Systems provide electronic chart navigation, route planning, monitoring and integration with radar, AIS and GPS sensors.",
+    models: [
+      "Furuno – FMD-3100, FMD-3200, FMD-3300",
+      "JRC – JAN-9201, JAN-7201"
+    ],
+    photoCount: 4,
+    photos: [ec1, ec2, ec3, ec4]
+  },
+  {
+    name: "Marine Radar",
+    description: "Marine radar systems detect targets and assist with collision avoidance and navigation in poor visibility.",
+    models: [
+      "Furuno – FAR-3000 Series, 1835, 1935, 1945",
+      "JRC – JMA-5200 Series, JMR-9200 Series",
+      "Raymarine – Quantum Radar"
+    ],
+    photoCount: 5,
+    photos: [mr1, mr2, mr3, mr4, mr5]
+  },
+  {
+    name: "AIS",
+    description: "Automatic Identification Systems transmit vessel identity, position, speed and navigation status to nearby ships and coastal stations.",
+    models: [
+      "Furuno – FA-170, FA-150",
+      "JRC – JHS-182, JHS-183",
+      "SAAB – R5 AIS",
+      "Raymarine – AIS700",
+      "Jodron"
+    ],
+    photoCount: 3,
+    photos: [ais1, ais2, ais3]
+  },
+  {
+    name: "Autopilot",
+    description: "Autopilot systems automatically control vessel steering using heading data from gyro or satellite compass.",
+    models: [
+      "Furuno – NAVpilot-300, NAVpilot-711C",
+      "Raymarine – Evolution Autopilot",
+      "Garmin – Reactor Autopilot"
+    ],
+    photoCount: 4,
+    photos: [auto1, auto2, auto3, auto4]
+  },
+  {
+    name: "Speed Log",
+    description: "Speed log systems measure vessel speed through water or over ground for voyage monitoring and navigation.",
+    models: [
+      "Furuno – DS-80, DS-85",
+      "JRC – JLN-740",
+      "SAL -R1",
+      "JMC"
+    ],
+    photoCount: 4,
+    photos: [speed1, speed2, speed3, speed4]
+  },
+  {
+    name: "Echo Sounder",
+    description: "Echo sounders measure water depth beneath the vessel for safe navigation in shallow waters.",
+    models: [
+      "Furuno – FE-800",
+      "JRC – JFE-400, JFE-700",
+      "Simrad – S3009"
+    ],
+    photoCount: 3,
+    photos: [echo1, echo2, echo3]
+  },
+  {
+    name: "BNWAS",
+    description: "Bridge Navigation Watch Alarm System ensures the officer on watch remains alert on the bridge.",
+    models: [
+      "Furuno – BR-500",
+      "JRC – JCY-1700",
+      "Raytheon Anschütz – NautoWatch, many others"
+    ],
+    photoCount: 2,
+    photos: [bn1, bn2]
+  },
+  {
+    name: "NAVTEX",
+    description: "NAVTEX receivers automatically receive maritime safety information, weather forecasts and navigational warnings.",
+    models: [
+      "Furuno – NX-700",
+      "JRC – NCR-333"
+    ],
+    photoCount: 3,
+    photos: [nav1, nav2, nav3]
+  }
+];
+
 const ServiceDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [service, setService] = useState<any>(null);
@@ -196,6 +377,92 @@ const ServiceDetail = () => {
           </div>
         </div>
       </section>
+
+      {/* Navigation Equipment Showcase Section */}
+      {id === 'navigation' && (
+        <section className="py-20 bg-marine-950 border-t border-white/5 relative overflow-hidden">
+          {/* Subtle glow effects */}
+          <div className="absolute top-1/4 left-0 w-96 h-96 bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-orange-500/5 rounded-full blur-[120px] pointer-events-none" />
+          
+          <div className="max-w-[1536px] mx-auto px-6 lg:px-8 relative z-10">
+            <div className="max-w-3xl mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Detailed <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-teal-200">Equipment Catalog</span>
+              </h2>
+              <p className="text-slate-400 text-base leading-relaxed">
+                Explore our comprehensive portfolio of marine navigation systems. We supply, test, install, and support these systems globally with a guarantee of original spares and technical excellence.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              {navigationEquipments.map((equip, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.05 }}
+                  className="glass-card equip-catalog-card rounded-2xl p-6 lg:p-8 flex flex-col justify-between hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-all duration-300"
+                >
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-teal-500/10 flex items-center justify-center text-teal-400 text-sm font-bold border border-teal-500/20">
+                        {idx + 1}
+                      </span>
+                      {equip.name}
+                    </h3>
+                    <p className="text-slate-300 text-sm mb-6 leading-relaxed">
+                      {equip.description}
+                    </p>
+
+                    <div className="mb-2">
+                      <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Typical Makes & Models:</h4>
+                      <ul className="space-y-2">
+                        {equip.models.map((model, mIdx) => (
+                          <li key={mIdx} className="text-slate-300 text-sm flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 shrink-0" />
+                            <span>{model}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Equipment Photos ({equip.photoCount} slots):</h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                      {Array.from({ length: equip.photoCount }).map((_, pIdx) => {
+                        const hasPhoto = 'photos' in equip && equip.photos && equip.photos[pIdx];
+                        return hasPhoto ? (
+                          <div
+                            key={pIdx}
+                            className="aspect-[4/3] relative overflow-hidden rounded-xl border border-white/10 hover:border-teal-500/30 transition-all select-none cursor-pointer group animate-fade-in"
+                          >
+                            <img
+                              src={(equip.photos as string[])[pIdx]}
+                              alt={`${equip.name} Photo ${pIdx + 1}`}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                        ) : (
+                          <div
+                            key={pIdx}
+                            className="aspect-[4/3] bg-marine-900/50 backdrop-blur-sm border border-dashed border-white/10 hover:border-teal-500/30 transition-colors rounded-xl flex flex-col items-center justify-center gap-1.5 p-2 text-slate-500 hover:text-teal-400 select-none cursor-pointer group"
+                          >
+                            <Image className="w-4 h-4 text-slate-600 group-hover:text-teal-400 transition-colors" />
+                            <span className="text-[10px] font-medium text-slate-600 group-hover:text-teal-500 transition-colors">Slot {pIdx + 1}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <GlobalSupportCTA />
     </div>
