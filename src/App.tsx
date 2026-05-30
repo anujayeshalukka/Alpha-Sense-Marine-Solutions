@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import PageLayout from './components/Layout/PageLayout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -18,6 +19,7 @@ function App() {
         <Route path="/brands" element={<SupportedBrands />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Analytics />
     </PageLayout>
   );
 }
