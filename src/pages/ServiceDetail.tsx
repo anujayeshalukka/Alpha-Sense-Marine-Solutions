@@ -51,7 +51,7 @@ import nav1 from '../assets/equipments/nav1.jpg';
 import nav2 from '../assets/equipments/nav2.jpg';
 import nav3 from '../assets/equipments/nav3.jpg';
 import alarmImg from '../assets/marine/alarm.jpg';
-import alarmImg2 from '../assets/marine/alarm.jpeg';
+
 import alarmImg3 from '../assets/marine/alarm.png';
 import cargoImg from '../assets/marine/cargo.jpg';
 import pmsImg1 from '../assets/marine/pms.jpg';
@@ -314,8 +314,8 @@ const automationEquipments = [
       "I/O and signal conditioning modules",
       "Communication and network interfaces"
     ],
-    photoCount: 3,
-    photos: [alarmImg, alarmImg2, alarmImg3]
+    photoCount: 2,
+    photos: [alarmImg, alarmImg3]
   },
   {
     name: "Ballast Water & Cargo Control Systems",
