@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send, MessageSquare, ChevronDown } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, MessageSquare, ChevronDown, CheckCircle2, XCircle } from 'lucide-react';
 import PageBanner from '../components/Layout/PageBanner';
 import { countryCodes } from '../data/countryCodes';
 import aboutImg from '../assets/about.jpg';
@@ -29,22 +29,58 @@ const Contact = () => {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `Enquiry from ${formData.name}`;
-    const body = `Name/Company: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.countryCode} ${formData.phone}
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
 
-Message & Requirements:
-${formData.message}`;
+    const data: Record<string, any> = {
+      name: formData.name,
+      email: formData.email,
+      phone: `${formData.countryCode} ${formData.phone}`,
+      message: formData.message,
+      access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'd076f7dc-d6fb-4720-9b53-4bef2ad8db73',
+      subject: `New Service Enquiry from ${formData.name}`,
+      from_name: formData.name
+    };
 
-    window.location.href = `mailto:admin@alphasense.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      const resData = await response.json();
+
+      if (response.ok && resData.success) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          countryCode: '+971',
+          phone: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -228,10 +264,25 @@ ${formData.message}`;
 
                   <button 
                     type="submit"
-                    className="w-full bg-teal-500 hover:bg-teal-400 text-[#ffffff] px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_15px_rgba(0,128,128,0.3)] hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className={`w-full bg-teal-500 hover:bg-teal-400 text-[#ffffff] px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_15px_rgba(0,128,128,0.3)] hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   >
-                    Submit Enquiry
+                    {isSubmitting ? 'Sending...' : 'Submit Enquiry'}
                   </button>
+
+                  {submitStatus === 'success' && (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-2 text-green-400 font-bold bg-green-950/20 px-4 py-3 rounded-lg border border-green-500/30 mt-4">
+                      <CheckCircle2 size={20} className="text-green-400" />
+                      <p className="text-sm">Thank you! Your enquiry has been sent successfully.</p>
+                    </motion.div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-2 text-red-400 font-bold bg-red-950/20 px-4 py-3 rounded-lg border border-red-500/30 mt-4">
+                      <XCircle size={20} className="text-red-400" />
+                      <p className="text-sm">Oops! Something went wrong. Please try again or email us directly at admin@alphasense.in.</p>
+                    </motion.div>
+                  )}
                 </form>
               </div>
             </motion.div>
