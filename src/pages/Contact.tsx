@@ -36,8 +36,15 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder for form submission logic
-    alert("Inquiry submitted! We will contact you shortly.");
+    const subject = `Enquiry from ${formData.name}`;
+    const body = `Name/Company: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.countryCode} ${formData.phone}
+
+Message & Requirements:
+${formData.message}`;
+
+    window.location.href = `mailto:admin@alphasense.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -221,7 +228,7 @@ const Contact = () => {
 
                   <button 
                     type="submit"
-                    className="w-full -[#ffffff] px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_15px_rgba(0,128,128,0.3)] hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] flex items-center justify-center gap-2"
+                    className="w-full bg-teal-500 hover:bg-teal-400 text-[#ffffff] px-8 py-4 rounded-lg font-semibold transition-all shadow-[0_0_15px_rgba(0,128,128,0.3)] hover:shadow-[0_0_20px_rgba(0,180,216,0.5)] flex items-center justify-center gap-2"
                   >
                     Submit Enquiry
                   </button>
