@@ -51,13 +51,21 @@ import nav1 from '../assets/equipments/nav1.jpg';
 import nav2 from '../assets/equipments/nav2.jpg';
 import nav3 from '../assets/equipments/nav3.jpg';
 import alarmImg from '../assets/marine/alarm.jpg';
+import alarmImg2 from '../assets/marine/alarm.jpeg';
+import alarmImg3 from '../assets/marine/alarm.png';
 import cargoImg from '../assets/marine/cargo.jpg';
 import pmsImg1 from '../assets/marine/pms.jpg';
 import pmsImg2 from '../assets/marine/pms2.jpg';
 import engineImg from '../assets/marine/engine.jpg';
 import tankImg from '../assets/marine/tank.jpg';
-import steelImg from '../assets/marine/steel.jpg';
+import tankImg2 from '../assets/marine/tank.jpeg';
+import tankImg3 from '../assets/marine/tank.png';
 import stImg from '../assets/marine/st.jpg';
+import stImg2 from '../assets/marine/steering.jpeg';
+import stImg3 from '../assets/marine/steering.png';
+import fireImg1 from '../assets/marine/fire (1).jpeg';
+import fireImg2 from '../assets/marine/fire (2).jpeg';
+import fireImg3 from '../assets/marine/fire (1).webp';
 import marineLightImg1 from '../assets/marine/marine.jpg';
 import marineLightImg2 from '../assets/marine/marine2.jpg';
 import cctvImg from '../assets/marine/cctv.jpg';
@@ -306,8 +314,8 @@ const automationEquipments = [
       "I/O and signal conditioning modules",
       "Communication and network interfaces"
     ],
-    photoCount: 1,
-    photos: [alarmImg]
+    photoCount: 3,
+    photos: [alarmImg, alarmImg2, alarmImg3]
   },
   {
     name: "Ballast Water & Cargo Control Systems",
@@ -354,8 +362,8 @@ const automationEquipments = [
       "Float level transmitters and switches",
       "Signal converters and barrier modules"
     ],
-    photoCount: 1,
-    photos: [tankImg]
+    photoCount: 3,
+    photos: [tankImg, tankImg2, tankImg3]
   },
   {
     name: "Fire Detection & Gas Detection Systems",
@@ -366,8 +374,8 @@ const automationEquipments = [
       "Central fire control panels and cards",
       "Intrinsically safe barriers and modules"
     ],
-    photoCount: 1,
-    photos: [steelImg]
+    photoCount: 3,
+    photos: [fireImg1, fireImg2, fireImg3]
   },
   {
     name: "Steering Control System",
@@ -378,8 +386,8 @@ const automationEquipments = [
       "Autopilot interface modules",
       "Solenoid valve driver cards"
     ],
-    photoCount: 1,
-    photos: [stImg]
+    photoCount: 3,
+    photos: [stImg, stImg2, stImg3]
   },
   {
     name: "Marine Lighting & Navigation Signal Lights",
