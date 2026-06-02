@@ -51,7 +51,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
       <div className="fixed bottom-24 md:bottom-6 right-6 z-50 flex flex-col gap-3">
         {/* WhatsApp Button */}
         <a
-          href="https://wa.me/971557310414"
+          href="https://wa.me/971562569801"
           target="_blank"
           rel="noopener noreferrer"
           className="w-12 h-12 bg-green-500 hover:bg-green-400 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all"

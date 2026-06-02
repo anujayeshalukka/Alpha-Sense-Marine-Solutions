@@ -46,7 +46,7 @@ const Contact = () => {
       email: formData.email,
       phone: `${formData.countryCode} ${formData.phone}`,
       message: formData.message,
-      access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '3f236b9f-e6bd-4046-aac9-d9f771ed6755',
+      access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'd43e84f1-4f22-46c6-b444-fec3673190f3',
       subject: `New Service Enquiry from ${formData.name}`,
       from_name: formData.name
     };
@@ -161,7 +161,7 @@ const Contact = () => {
               </div>
               
               <a 
-                href="https://wa.me/971557310414"
+                href="https://wa.me/971562569801"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-marine-800 hover:bg-marine-700 border border-teal-500/30 p-6 rounded-2xl flex items-center justify-between group transition-colors"

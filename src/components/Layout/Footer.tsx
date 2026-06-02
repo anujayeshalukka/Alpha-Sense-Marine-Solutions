@@ -92,7 +92,7 @@ const Footer = () => {
           </p>
           {/* Floating WhatsApp Button (Visual representation here, actual floating button in PageLayout) */}
           <a
-            href="https://wa.me/971557310414"
+            href="https://wa.me/971562569801"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-[#18b3b5] hover:text-[#5eead4] text-sm font-medium transition-colors"
